@@ -3,6 +3,8 @@
 "settings_title" = "Settings";
 "settings_autoplay_title" = "AutoPlay Library";
 "settings_autoplay_description" = "After finishing an audiobook, playback will resume with all items in the library, including items in folders.";
+"settings_deadMan_title" = "Dead Man's Switch";
+"settings_deadMan_description" = "Each play automatically starts last used sleep timer, defaults to 10 minutes.";
 "settings_smartrewind_title" = "Smart Rewind";
 "settings_smartrewind_description" = "Rewind 30 seconds after being paused for 10 minutes.";
 "settings_boostvolume_title" = "Boost Volume";

@@ -674,6 +674,7 @@ extension PlayerManager {
     if Int(currentItem.duration) == Int(CMTimeGetSeconds(self.audioPlayer.currentTime())) { return }
 
     self.handleSmartRewind(currentItem)
+    self.handleDeadMan(currentItem)
 
     self.fadeTimer?.invalidate()
     self.shakeMotionService.stopMotionUpdates()
@@ -689,6 +690,20 @@ extension PlayerManager {
       WidgetCenter.shared.reloadAllTimelines()
     }
   }
+  func handleDeadMan(_ item: PlayableItem) {
+    let deadManEnabled = UserDefaults.standard.bool(forKey: Constants.UserDefaults.deadManEnabled)
+    
+    let interval = Double(600)
+
+    if deadManEnabled{
+      if SleepTimer.shared.state == .off {
+        SleepTimer.shared.setTimer(.countdown(interval))
+      } else {
+        SleepTimer.shared.restartTimer()
+      }
+    }
+  }
+
 
   func handleSmartRewind(_ item: PlayableItem) {
     let smartRewindEnabled = UserDefaults.standard.bool(forKey: Constants.UserDefaults.smartRewindEnabled)

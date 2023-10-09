@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22146" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nNa-3d-7ZC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nNa-3d-7ZC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2289,6 +2289,48 @@ Use with caution and care for your hearing.</string>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection footerTitle="Each play automatically start 10 minute sleep timer." id="FZk-d6-TsW">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="SKd-j0-QWa" customClass="StaticCellView" customModule="BookPlayer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="787" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SKd-j0-QWa" id="vpz-Hv-kJU">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OBJ-3h-d0d">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="49" id="rcV-kt-4YM"/>
+                                                    </constraints>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Dead Man Switch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaR-Ip-FGH" customClass="LocalizableLabel" customModule="BookPlayer" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="11.5" width="286" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizedKey" value="settings_deadMan_title"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OBJ-3h-d0d" firstAttribute="centerY" secondItem="vpz-Hv-kJU" secondAttribute="centerY" id="1tu-gj-4OP"/>
+                                                <constraint firstItem="UaR-Ip-FGH" firstAttribute="centerY" secondItem="vpz-Hv-kJU" secondAttribute="centerY" id="GN9-Xs-9g9"/>
+                                                <constraint firstItem="OBJ-3h-d0d" firstAttribute="leading" secondItem="UaR-Ip-FGH" secondAttribute="trailing" constant="8" id="ONc-Rt-Tvc"/>
+                                                <constraint firstAttribute="trailing" secondItem="OBJ-3h-d0d" secondAttribute="trailing" constant="16" id="aH2-5j-Fl6"/>
+                                                <constraint firstItem="UaR-Ip-FGH" firstAttribute="leading" secondItem="vpz-Hv-kJU" secondAttribute="leading" constant="16" id="cS2-F1-Md4"/>
+                                                <constraint firstItem="UaR-Ip-FGH" firstAttribute="leading" secondItem="vpz-Hv-kJU" secondAttribute="leading" constant="16" id="oUp-ER-u1J"/>
+                                                <constraint firstItem="OBJ-3h-d0d" firstAttribute="centerY" secondItem="vpz-Hv-kJU" secondAttribute="centerY" id="sxc-A3-lDd"/>
+                                                <constraint firstItem="UaR-Ip-FGH" firstAttribute="centerY" secondItem="vpz-Hv-kJU" secondAttribute="centerY" id="t7X-7d-R3U"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="customLabel" destination="UaR-Ip-FGH" id="Mj1-gf-hXN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Te4-I9-OuL" id="aPT-93-Nq2"/>
@@ -2299,6 +2341,7 @@ Use with caution and care for your hearing.</string>
                     <connections>
                         <outlet property="boostVolumeSwitch" destination="REu-u1-fwP" id="ORF-rl-zos"/>
                         <outlet property="chapterTimeSwitch" destination="jzV-Oj-QRt" id="lY1-Fl-C2d"/>
+                        <outlet property="deadManSwitch" destination="OBJ-3h-d0d" id="sad-QL-uhv"/>
                         <outlet property="forwardIntervalLabel" destination="hD8-4g-KSV" id="kFR-tA-8kv"/>
                         <outlet property="globalSpeedSwitch" destination="TGl-mI-vfb" id="yOj-Il-FSK"/>
                         <outlet property="listImageView" destination="wIP-hW-J0B" id="nL2-4x-xaa"/>

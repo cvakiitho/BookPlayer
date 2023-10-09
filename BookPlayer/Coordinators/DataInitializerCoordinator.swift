@@ -200,6 +200,8 @@ class DataInitializerCoordinator: BPLogger {
     defaults.set(true, forKey: Constants.UserDefaults.chapterContextEnabled)
     // Set smart-rewind as default
     defaults.set(true, forKey: Constants.UserDefaults.smartRewindEnabled)
+    // Set deadMan switch off as default
+    defaults.set(false, forKey: Constants.UserDefaults.deadManEnabled)
     // Set system theme as default
     defaults.set(true, forKey: Constants.UserDefaults.systemThemeVariantEnabled)
     // Set autoplay enabled as default

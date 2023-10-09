@@ -13,6 +13,7 @@ import UIKit
 
 class PlayerSettingsViewController: UITableViewController, Storyboarded {
   @IBOutlet weak var smartRewindSwitch: UISwitch!
+  @IBOutlet weak var deadManSwitch: UISwitch!
   @IBOutlet weak var boostVolumeSwitch: UISwitch!
   @IBOutlet weak var globalSpeedSwitch: UISwitch!
   @IBOutlet weak var rewindIntervalLabel: UILabel!
@@ -26,7 +27,7 @@ class PlayerSettingsViewController: UITableViewController, Storyboarded {
   private var disposeBag = Set<AnyCancellable>()
 
   enum SettingsSection: Int {
-    case intervals = 0, rewind, volume, speed, playerList, progressLabels
+    case intervals = 0, rewind, volume, speed, playerList, progressLabels, deadMan
   }
 
   let playerListPreferencePath = IndexPath(row: 0, section: SettingsSection.playerList.rawValue)
@@ -46,8 +47,10 @@ class PlayerSettingsViewController: UITableViewController, Storyboarded {
     self.smartRewindSwitch.addTarget(self, action: #selector(self.rewindToggleDidChange), for: .valueChanged)
     self.boostVolumeSwitch.addTarget(self, action: #selector(self.boostVolumeToggleDidChange), for: .valueChanged)
     self.globalSpeedSwitch.addTarget(self, action: #selector(self.globalSpeedToggleDidChange), for: .valueChanged)
+    self.deadManSwitch.addTarget(self, action: #selector(self.deadManToggleDidChange), for: .valueChanged)
 
     // Set initial switch positions
+    self.deadManSwitch.setOn(UserDefaults.standard.bool(forKey: Constants.UserDefaults.deadManEnabled), animated: false)
     self.smartRewindSwitch.setOn(UserDefaults.standard.bool(forKey: Constants.UserDefaults.smartRewindEnabled), animated: false)
     self.boostVolumeSwitch.setOn(UserDefaults.standard.bool(forKey: Constants.UserDefaults.boostVolumeEnabled), animated: false)
     self.globalSpeedSwitch.setOn(UserDefaults.standard.bool(forKey: Constants.UserDefaults.globalSpeedEnabled), animated: false)
@@ -170,6 +173,8 @@ class PlayerSettingsViewController: UITableViewController, Storyboarded {
     switch settingsSection {
     case .intervals:
       return "settings_skip_description".localized
+    case .deadMan:
+      return "settings_deadMan_description".localized
     case .rewind:
       return "settings_smartrewind_description".localized
     case .volume:
@@ -185,6 +190,10 @@ class PlayerSettingsViewController: UITableViewController, Storyboarded {
 
   @objc func rewindToggleDidChange() {
     UserDefaults.standard.set(self.smartRewindSwitch.isOn, forKey: Constants.UserDefaults.smartRewindEnabled)
+  }
+  
+  @objc func deadManToggleDidChange() {
+    UserDefaults.standard.set(self.deadManSwitch.isOn, forKey: Constants.UserDefaults.deadManEnabled)
   }
 
   @objc func boostVolumeToggleDidChange() {
